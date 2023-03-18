@@ -1,15 +1,19 @@
-package com.bignerdranch.android.criminallintent3
+package com.bignerdranch.android.criminalIntent_1
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import androidx.fragment.app.Fragment
+
+class R {
+
+}
 
 class CrimeFragment : Fragment() {
 
@@ -29,11 +33,11 @@ class CrimeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_crime, container, false)
+        val view =  inflater.inflate(R.layout.fragment_crime, container, false) // page 165
 
         titleField = view.findViewById(R.id.crime_title) as EditText
         dateButton = view.findViewById(R.id.crime_date) as Button
-        solvedCheckBox = view.findViewById(R.id.crime_solved) as CheckBox
+        solvedCheckBox = view.findViewById(R.id.crime.solved) as CheckBox
 
         dateButton.apply {
             text = crime.date.toString()
@@ -74,10 +78,9 @@ class CrimeFragment : Fragment() {
 
         solvedCheckBox.apply {
             setOnCheckedChangeListener { _, isChecked ->
-                crime_isSolved = ischecked
+                crime.isSolved = isChecked
 
             }
         }
     }
-
 }

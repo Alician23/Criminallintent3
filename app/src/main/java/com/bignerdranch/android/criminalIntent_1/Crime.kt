@@ -1,4 +1,4 @@
-package com.bignerdranch.android.criminallintent3
+package com.bignerdranch.android.criminalIntent_1
 
 import java.util.*
 
