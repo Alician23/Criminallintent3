@@ -10,10 +10,8 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import com.bignerdranch.android.criminallintent3.R
 
-class R {
-
-}
 
 class CrimeFragment : Fragment() {
 
@@ -33,15 +31,15 @@ class CrimeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_crime, container, false) // page 165
+        val view =  inflater.inflate(R.layout.fragment_crime, container, false)
 
         titleField = view.findViewById(R.id.crime_title) as EditText
         dateButton = view.findViewById(R.id.crime_date) as Button
-        solvedCheckBox = view.findViewById(R.id.crime.solved) as CheckBox
+        solvedCheckBox = view.findViewById(R.id.crime_solved) as CheckBox
 
         dateButton.apply {
             text = crime.date.toString()
-            isEnabled = false // button is turned off to ensure user from pressing it
+            isEnabled = false // button is turned off to ensure user from pressing on it
         }
 
         return view
@@ -58,7 +56,7 @@ class CrimeFragment : Fragment() {
                 count: Int,
                 after: Int
             ) {
-
+                // This space intentionally left blank
             }
 
             override fun onTextChanged(
@@ -74,6 +72,7 @@ class CrimeFragment : Fragment() {
 
             }
         }
+
         titleField.addTextChangedListener(titleWatcher)
 
         solvedCheckBox.apply {
