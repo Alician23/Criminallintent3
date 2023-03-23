@@ -22,7 +22,7 @@ class CrimeListFragment : Fragment() {
     private var adapter: CrimeAdapter? = null
 
     private val crimeListViewModel: CrimeListViewModel by lazy {
-        ViewModelProviders.of(this).get(CrimeListViewModel :: class.java)
+        ViewModelProvider(this).get(CrimeListViewModel :: class.java)
     }
 
 //    override fun onCreate(savedInstanceState: Bundle?) {

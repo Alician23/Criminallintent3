@@ -2,7 +2,7 @@ package com.bignerdranch.android.criminalIntent_1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bignerdranch.android.criminallintent3.R
+
 
 
 class MainActivity : AppCompatActivity() {
