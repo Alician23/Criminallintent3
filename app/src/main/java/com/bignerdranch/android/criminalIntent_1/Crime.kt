@@ -4,7 +4,8 @@ import java.util.*
 
 class Crime {
 
-    data class Crime(val id: UUID = UUID.randomUUID(),
+    @Entity
+    data class Crime(@PrimaryKey val id: UUID = UUID.randomUUID(),
                      var title: String = "",
                      var date: Date = Date(),
                      var isSolved: Boolean = false)
