@@ -25,11 +25,6 @@ class CrimeListFragment : Fragment() {
         ViewModelProvider(this).get(CrimeListViewModel :: class.java)
     }
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        Log.d(TAG, "Total crimes: ${crimeListViewModel.crimes.size}")
-//    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
