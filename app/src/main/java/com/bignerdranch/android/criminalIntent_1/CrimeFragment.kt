@@ -10,7 +10,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import com.bignerdranch.android.criminallintent3.R
+
 
 
 class CrimeFragment : Fragment() {
