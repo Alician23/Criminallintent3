@@ -11,7 +11,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 
-
+private const val ARG_CRIME_ID = "crime_id"
 
 class CrimeFragment : Fragment() {
 
@@ -81,5 +81,7 @@ class CrimeFragment : Fragment() {
 
             }
         }
+
+
     }
 }
