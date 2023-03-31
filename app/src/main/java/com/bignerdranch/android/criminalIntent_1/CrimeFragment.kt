@@ -1,5 +1,6 @@
 package com.bignerdranch.android.criminalIntent_1
 
+import android.app.ProgressDialog.show
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,6 +18,8 @@ import java.util.*
 
 private const val  TAG = "CrimeFragment"
 private const val ARG_CRIME_ID = "crime_id"
+private const val DIALOG_DATE = "DialogDate"
+private const val REQUEST_DATE = 0
 
 class CrimeFragment : Fragment() {
 
@@ -46,11 +49,6 @@ class CrimeFragment : Fragment() {
         titleField = view.findViewById(R.id.crime_title) as EditText
         dateButton = view.findViewById(R.id.crime_date) as Button
         solvedCheckBox = view.findViewById(R.id.crime_solved) as CheckBox
-
-        dateButton.apply {
-            text = crime.date.toString()
-            isEnabled = false // button is turned off to ensure user from pressing on it
-        }
 
         return view
     }
@@ -103,11 +101,23 @@ class CrimeFragment : Fragment() {
 
             }
         }
+
+        dateButton.setOnClickListener {
+            DatePickerFragment.newInstance(crime.date).apply {
+                setTargetFragment(this@CrimeFragment, REQUEST_DATE)
+                show(this@CrimeFragment.requireFragmentManager(), DIALOG_DATE)
+            }
+        }
     }
 
     override fun onStop() {
         super.onStop()
         crimeDetailViewModel.saveCrime(crime)
+    }
+
+    override fun onDateSelected(date: Date) {
+        crime.date = date
+        updateUI()
     }
 
     private fun updateUI() {
