@@ -11,4 +11,7 @@ import java.util.*
                      var title: String = "",
                      var date: Date = Date(),
                      var isSolved: Boolean = false,
-                     var suspect: String = "")
+                     var suspect: String = "") {
+        val photoFileName
+            get() = "IMG_$id.jpg"
+    }
