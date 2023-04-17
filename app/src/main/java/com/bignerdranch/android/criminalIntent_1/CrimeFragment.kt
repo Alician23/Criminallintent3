@@ -77,8 +77,8 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks{
         solvedCheckBox = view.findViewById(R.id.crime_solved) as CheckBox
         reportButton = view.findViewById(R.id.crime_report) as Button
         suspectButton = view.findViewById(R.id.crime_suspect) as Button
-        photoButton = view.findViewById(R.id.crime_photo) as ImageButton
-        photoView = view.findViewById((R.id.crime_photo) as ImageView
+        photoButton = view.findViewById(R.id.crime_camera) as ImageButton
+        photoView = view.findViewById(R.id.crime_photo) as ImageView
 
         return view
     }
@@ -182,7 +182,7 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks{
             val resolvedActivity: ResolveInfo? =
                 packageManager.resolveActivity(
                     captureImage,
-                    packageManager.MATCH_DEFAULT_ONLY
+                    PackageManager.MATCH_DEFAULT_ONLY
                 )
             if (resolvedActivity == null) {
                 isEnabled = false
@@ -199,15 +199,15 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks{
 
                 for (cameraActivity in cameraActivities) {
                     requireActivity().grantUriPermission(
-                        cameraActivity.activityInfor.packageName,
+                        cameraActivity.activityInfo.packageName,
                         photoUri,
-                        Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-                    )
+                        Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
                 }
 
                 startActivityForResult(captureImage, REQUEST_PHOTO)
             }
         }
+
         return view
     }
 
