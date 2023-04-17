@@ -216,6 +216,12 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks{
         crimeDetailViewModel.saveCrime(crime)
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        requireActivity().revokeUriPermission(photoUri,
+            Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+    }
+
     override fun onDateSelected(date: Date) {
         crime.date = date
         updateUI()
@@ -231,6 +237,16 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks{
 
         if (crime.suspect.isNotEmpty()) {
             suspectButton.text = crime.suspect
+        }
+        updatePhotoView()
+    }
+
+    private fun updatePhotoView () {
+        if (photoFile.exists()) {
+            val bitmap = getScaledBitmap(photoFile.path, requireActivity())
+            photoView.setImageDrawable(bitmap)
+        }else {
+            photoView.setImageDrawable(null)
         }
     }
 
@@ -259,6 +275,12 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks{
                     crimeDetailViewModel.saveCrime(crime)
                     suspectButton.text = suspect
                 }
+            }
+
+            requestCode == REQUEST_PHOTO -> {
+                requireActivity().revokeUriPermission(photoUri,
+                    Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+                updatePhotoView()
             }
         }
     }
